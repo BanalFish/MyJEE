@@ -28,7 +28,8 @@ public class PropertyDAO {
             ResultSet rs=s.executeQuery(sql);
             while(rs.next()){
                 total=total+1;//如果有结果就+1
-                //total = rs.getInt(1); 这里h2j应该写错了
+                //total = rs.getInt(1);
+                //重启数据库就不会出现断层现象
             }
 
         } catch (SQLException throwables) {
@@ -136,6 +137,7 @@ public class PropertyDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
 
         return list;
 
