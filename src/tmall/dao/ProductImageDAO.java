@@ -8,8 +8,8 @@ import java.sql.*;
 import java.util.List;
 
 public class ProductImageDAO {
-    public static final String type_single = "type_single";
-    public static final String type_detail = "type_detail";
+    public static final String type_single = "type_single";//单个图片
+    public static final String type_detail = "type_detail";//详情图片
 
     private Connection c;
 
