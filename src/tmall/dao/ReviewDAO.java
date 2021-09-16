@@ -65,7 +65,8 @@ public class ReviewDAO {
 
             ResultSet rs=ps.getGeneratedKeys();
             if(rs.next()){
-                //为什么这里还要设置
+                //这里还要设置id 是因为之前只在数据库中没有设置了id 实体类没有设置
+                //为什么呢 是用类.id的时候防止出现空值吗
                 bean.setId(rs.getInt(1));
             }
         } catch (SQLException throwables) {
@@ -121,10 +122,12 @@ public class ReviewDAO {
         return review;
     }
 
+    //获取指定产品的评价
     public List<Review> list(int pid){
         return list(pid,0,Short.MAX_VALUE);
     }
 
+    //获取指定产品一共有多少条评价
     public int getCount(int pid){
         String sql = "select count(*) from Review where pid = ? ";
 
@@ -143,6 +146,7 @@ public class ReviewDAO {
         return 0;
     }
 
+    //获取指定产品的评价
     public List<Review> list(int pid, int start, int count){
         List<Review> beans = new ArrayList<Review>();
 

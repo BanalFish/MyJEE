@@ -1,11 +1,13 @@
 package tmall.bean;
 
 public class OrderItem {
-    private int number;
+    private int number;//买的数量
     private Product product;
     private Order order;//与订单相关联
     private User user;
     private int id;
+
+
     public int getNumber() {
         return number;
     }
