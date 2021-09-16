@@ -2,6 +2,7 @@ package tmall.dao;
 
 import tmall.bean.Category;
 import tmall.bean.Product;
+import tmall.bean.ProductImage;
 import tmall.util.DBUtil;
 import tmall.util.DateUtil;
 
@@ -232,7 +233,9 @@ public class ProductDAO {
 
     //一个产品有多个图片，但是只有一个主图片，把第一个图片设置为主图片
     public void setFirstProductImage(Product p){
-
+        List<ProductImage> pis=new ProductImageDAO().list(p,ProductImageDAO.type_single);
+        if(!pis.isEmpty())
+            p.setFirstProductImage(pis.get(0));
     }
 
     //为产品设置销售和评价数量

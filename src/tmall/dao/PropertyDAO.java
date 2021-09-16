@@ -21,7 +21,7 @@ public class PropertyDAO {
 
     public int getTotal(int cid){
         int total=0;
-        String sql="select * from property";
+        String sql="select count(*) from property";
 
         try(Statement s=c.createStatement()){
 

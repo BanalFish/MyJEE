@@ -23,7 +23,7 @@ public class ProductImageDAO {
 
     public int getTotal(){
         int total=0;
-        String sql="select * from ProductImage";
+        String sql="select count(*) from ProductImage";
         try(Statement s=c.createStatement()){
             ResultSet rs=s.executeQuery(sql);
             while(rs.next()){
@@ -88,7 +88,7 @@ public class ProductImageDAO {
             ResultSet rs=s.executeQuery(sql);
             if(rs.next()){
                 productImage.setId(id);
-            //    productImage.setProduct();   需要productDAO
+                productImage.setProduct(new ProductDAO().get(id));
                 productImage.setType(rs.getString(3));
 
             }
@@ -116,7 +116,7 @@ public class ProductImageDAO {
             while(rs.next()){
                 ProductImage pi=null;
                 pi.setId(rs.getInt(1));
-                //需要productDAO
+                pi.setProduct(new ProductDAO().get(rs.getInt("id")));
                 pi.setType(rs.getString(3));
                 list.add(pi);
             }
