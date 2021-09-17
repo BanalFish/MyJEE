@@ -1,7 +1,6 @@
 <component name="libraryTable">
-  <library name="mysql-connector-java-8.0.19">
+  <library name="servlet-api">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/mysql-connector-java-8.0.19.jar!/" />
       <root url="jar://$USER_HOME$/Desktop/comein/temp/servlet-api.jar!/" />
     </CLASSES>
     <JAVADOC />
