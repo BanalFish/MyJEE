@@ -106,12 +106,12 @@ public class CategoryDAO {
     }
 
     //通过ID得到一群类别信息
-    private List<Category> list(int start, short count) {
+    public List<Category> list(int start, int count) {
         List<Category> beans=new ArrayList<>();
         String sql="select * from category order by id desc limit ?,?";
         try(PreparedStatement ps=c.prepareStatement(sql)){
             ps.setInt(1,start);
-            ps.setShort(2,count);
+            ps.setInt(2,count);
             ResultSet rs=ps.executeQuery();
 
             while(rs.next()){

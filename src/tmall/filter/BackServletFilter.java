@@ -12,6 +12,9 @@ public class BackServletFilter implements Filter {
 
     }
 
+    /**
+    判断进入哪个Servlet的哪个方法
+     **/
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest request=(HttpServletRequest) req;
@@ -23,9 +26,13 @@ public class BackServletFilter implements Filter {
         uri= StringUtils.remove(uri,contextPath);
 
         if(uri.startsWith("/admin")){
+            //http://127.0.0.1:8080/tmall/admin_category_list 获取categoryServlet
             String servletPath=StringUtils.substringBetween(uri,"_","_")+"Servlet";
+            //获取list
             String method=StringUtils.substringAfter(uri,"_");
+            //要想从request获得属性，必须先给它设置属性
             request.setAttribute("method",method);
+
             req.getRequestDispatcher("/"+servletPath).forward(request,response);
 
             return;
