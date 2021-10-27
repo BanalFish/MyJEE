@@ -51,6 +51,7 @@ public abstract class BaseBackServlet extends HttpServlet {
         }
         Page page=new Page(start,count);
 
+        //借助反射，调用对应的方法
         String method=(String) request.getAttribute("method");
         Method m= null;
         String redirect=null;
